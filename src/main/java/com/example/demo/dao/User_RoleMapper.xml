@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.User_RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.domain.User_RoleKey" >
+    <id column="u_id" property="uId" jdbcType="BIGINT" />
+    <id column="r_id" property="rId" jdbcType="BIGINT" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.demo.domain.User_RoleKey" >
+    delete from u_r
+    where u_id = #{uId,jdbcType=BIGINT}
+      and r_id = #{rId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.domain.User_RoleKey" >
+    insert into u_r (u_id, r_id)
+    values (#{uId,jdbcType=BIGINT}, #{rId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.domain.User_RoleKey" >
+    insert into u_r
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="rId != null" >
+        r_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=BIGINT},
+      </if>
+      <if test="rId != null" >
+        #{rId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

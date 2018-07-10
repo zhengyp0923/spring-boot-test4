@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/wzt
+        username: root
+        password: 123
+        driver-class-name: com.mysql.jdbc.Driver
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+#mybatis:
+  #mapper-locations: classpath:com.example.demo.dao/*.xml
+  #typeAliasesPackage: com.example.demo.domain
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql

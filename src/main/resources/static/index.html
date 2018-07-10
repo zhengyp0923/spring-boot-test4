@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<!--按照用户不同的角色显示不同的div-->
+<script type="text/javascript">
+
+//    当页面加载时从服务器获取当前用户的所有的角色
+    $(function(){
+        judgeAuthority();
+        alert("加载完成");
+    });
+
+    function judgeAuthority() {
+        $.ajax({
+            type: "get",
+            url: "/role/findRoleByUsername",
+            success: function (data) {
+                alert(data);
+                for(var i=0;i<data.length;i++){
+                    if(data[i]=="user_operation"){
+                        document.getElementById("toolbar").style.display="flex";//显
+                    }
+                }
+            }
+        })
+    }
+</script>
+
+<body>
+<div id="toolbar" style="display:none ;">用户操作</div>
+index
+</body>
+</html>
