@@ -1,0 +1,2 @@
+springboot+mybatis+encache+shiro实现权限框架
+单机版   未实现及集群版 单点登录(Session的共享)
